@@ -1,0 +1,160 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner sc= new Scanner(System.in);
+        int opz;
+        boolean fine=true;
+        int n=5;
+        int a=0;
+        int [] vetNumeri=null;
+        int [] vettore2;
+
+        vettore2=caricaVettore2(n, sc);
+        stampaVettore(vettore2);
+        do
+        {
+            cls();
+            System.out.println("Seleziona un'opzione");
+            menu();
+            opz= sc.nextInt();
+            switch(opz)
+            {
+                case 1: System.out.println("Estrazione Lotto");
+                    vetNumeri=caricaVettore(n);
+                    break;
+                case 2: System.out.println("Visualizza Numeri");
+                    if(vetNumeri!=null)
+                    {
+                        System.out.println("Numeri Estratti:");
+                        stampaVettore(vetNumeri);
+                    }
+                    else System.out.println("Non è stato creato il vettore");
+                    break;
+                case 3: System.out.println("Risultato: ");
+                    for(int i=0; i<n; i++)
+                    {
+                        for(int jay=0; jay<n; jay++)
+                        if(vettore2[i]==vetNumeri[jay])
+                        {
+                            a++;
+                        }
+                    }
+                    if(a==0)
+                    {
+                        System.out.println("Sei ludupatico smetti dai tanto non vinci");
+                    }
+                    else if(a==1)
+                    {
+                        System.out.println("Hai azzeccato 1 daai vecchio");
+                    }
+                    else if(a==2)
+                    {
+                        System.out.println("HAi fatto Ambo");
+                    }
+                    else if(a==3)
+                    {
+                        System.out.println("Hai Fatto terna");
+                    }
+                    else if(a==4)
+                    {
+                        System.out.println("Hai fatto quaterna");
+                    }
+                    else if(a==5)
+                    {
+                        System.out.println("Hai fatto cinquina");
+                    }
+
+                        break;
+                case 4: System.out.println("Exit");
+                    fine=false;
+                    break;
+                default: System.out.println("Opzione errata");
+            }attesa(1000);
+
+        }while(fine==true);
+
+    }
+    private static void menu ()
+    {
+        System.out.println("== App numeri Casuali");
+        System.out.println("[1] Genera Numeri");
+        System.out.println("[2] Visualizza Numeri");
+        System.out.println("[3] Risultato: ");
+        System.out.println("[4] Exit");
+    }
+    private static int[] caricaVettore2(int n, Scanner kyb)
+    {
+        int[] vettore= new int[n];
+        int num;
+        for (int i = 0; i < n; i++)
+        {
+            System.out.println("Inserisci un numero: ");
+            num=kyb.nextInt();
+            vettore[i] = num;
+        }
+        return vettore;
+    }
+    private static int[] caricaVettore(int n)
+    {
+        int casuale;
+        int[] vettore = new int[n];
+        Random rn = new Random();
+        for (int i = 0; i < n; i++) {
+            casuale = rn.nextInt(90);
+            vettore[i] = casuale;
+        }
+        return vettore;
+    }
+    private static void stampaVettore(int[] vettore)
+    {
+        for (int num : vettore) {
+            System.out.println(num);
+        }
+    }
+
+
+
+    private static int[] filtraNumeriPari(int[] vettore) {
+        int countPari = 0;
+        // Conta quanti numeri pari ci sono nel vettore
+        for (int num : vettore) {
+            if (num % 2 == 0) {
+                countPari++;
+            }
+        }
+
+        int[] vettorePari = new int[countPari];
+        int index = 0;
+        // Copia i numeri pari nel nuovo vettore
+        for (int num : vettore) {
+            if (num % 2 == 0) {
+                vettorePari[index] = num;
+                index++;
+            }
+        }
+
+        return vettorePari;
+    }
+
+    public static void cls()
+    {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public static void attesa(int secondi)
+    {
+        try {
+            Thread.sleep(secondi);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
