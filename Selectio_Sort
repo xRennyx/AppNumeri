@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int dim;
+        int num;
+        
+        do {
+            System.out.println("Inserisci dimensione del vettore: ");
+            dim=sc.nextInt();
+        } while(dim<0);
+        
+        int[] array= new int[dim];
+        
+        for(int i=0; i<dim; i++) {
+            do {
+                System.out.println("Inserisci numero: ");
+                num= sc.nextInt();
+                array[i]=num;
+            } while(num<0);
+        }
+        Riordina(array);
+        System.out.println("Il Vettore in ordine senza doppi:");
+        Visualizza(array);
+    }
+
+    public static void Riordina(int[] array) {
+        int index = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (i == 0 || array[i] != array[i - 1]) {
+                array[index] = array[i];
+                index++;
+            }
+        }
+        array = RiduciArray(array, index);
+        RiordinaPari(array);
+    }
+
+    public static void RiordinaPari(int[] array) {
+        int[] pari = new int[array.length];
+        int indexPari = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] % 2 == 0) {
+                pari[indexPari] = array[i];
+                indexPari++;
+            }
+        }
+
+        RiordinaPariArray(pari, indexPari);
+
+        // Copia i numeri pari ordinati nel vettore originale
+        for (int i = 0; i < indexPari; i++) {
+            array[i] = pari[i];
+        }
+    }
+
+    public static void RiordinaPariArray(int[] array, int length) {
+        for (int i = 0; i < length - 1; i++) {
+            int minPos = i; 
+            for (int j = i + 1; j < length; j++) {
+                if (array[minPos] > array[j]) {
+                    minPos = j;
+                }
+            }
+            int temp = array[minPos];
+            array[minPos] = array[i];
+            array[i] = temp;
+        }
+    }
+
+    public static void Visualizza(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+    }
+
+    public static int[] RiduciArray(int[] array, int newSize) {
+        int[] newArray = new int[newSize];
+        System.arraycopy(array, 0, newArray, 0, newSize);
+        return newArray;
+    }
+}
