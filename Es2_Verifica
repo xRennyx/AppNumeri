@@ -4,7 +4,23 @@ public class Main
 {
     public static void main(String[] args)
     {
-        int[]a={9,4,6,5,2,10,7,1,8};
+        Scanner sc= new Scanner(System.in);
+        int dim;
+        int num;
+        do{
+            System.out.println("Inserisci dimesnione del vettore: ");
+            dim= sc.nextInt();
+        }while(dim<8 || dim>10);
+        
+        int[]a= new int[dim];
+        for(int i=0; i<a.length; i++)
+        {
+            do {
+                System.out.println("Inserisic valori:");
+                num = sc.nextInt();
+            }while(num<1 || num>30);
+            a[i]=num;
+        }
 
         Ordina(a);
         Visualizza(a);
