@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        int[]a={9,4,6,5,2,10,7,1,8};
+
+        Ordina(a);
+        Visualizza(a);
+    }
+    public static void Ordina(int[]a)
+    {
+        int temp;
+        int minPos;
+
+        for(int i=0; i<a.length; i++)
+        {
+            minPos=i;
+            if(a[i]%2==0)
+            {
+                for(int j=i+1; j<a.length; j++)
+                {
+                    if(a[j]%2==0)
+                    {
+                        if(a[minPos]>a[j])
+                        {
+                            minPos=j;
+                        }
+                    }
+                }
+            }
+            temp=a[i]; //ho corretto l'ordine delle variabili
+            a[i]=a[minPos];
+            a[minPos]=temp;
+        }
+    }
+    public static void Visualizza(int[]a)
+    {
+        for(int i=0; i<a.length; i++)
+        {
+            System.out.println(a[i]);
+        }
+    }
+}
