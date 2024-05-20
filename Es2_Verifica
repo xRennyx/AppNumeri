@@ -19,7 +19,7 @@ public class Main {
                 do {
                     System.out.println("Inserisci valori:");
                     num = sc.nextInt();
-                } while (num < 1 || num > 30 || found);
+                } while (num < 1 || num > 30 || trovato);
                 trovato = true;
                 for (int j = 0; j < i; j++) {
                     if (a[j] == num) {
