@@ -14,19 +14,19 @@ public class Main {
         int[] a = new int[dim];
 
         for (int i = 0; i < a.length; i++) {
-            boolean found = false;
+            boolean trovato = false;
             do{
                 do {
                     System.out.println("Inserisci valori:");
                     num = sc.nextInt();
                 } while (num < 1 || num > 30 || found);
-                found = true;
+                trovato = true;
                 for (int j = 0; j < i; j++) {
                     if (a[j] == num) {
-                        found = false;
+                        trovato = false;
                     }
                 }
-            }while(found==false);
+            }while(trovato==false);
             a[i] = num;
         }
 
