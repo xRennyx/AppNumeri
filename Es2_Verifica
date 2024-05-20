@@ -1,60 +1,62 @@
 import java.util.Scanner;
 
-public class Main
-{
-    public static void main(String[] args)
-    {
-        Scanner sc= new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         int dim;
         int num;
-        do{
-            System.out.println("Inserisci dimesnione del vettore: ");
-            dim= sc.nextInt();
-        }while(dim<8 || dim>10);
-        
-        int[]a= new int[dim];
-        for(int i=0; i<a.length; i++)
-        {
-            do {
-                System.out.println("Inserisic valori:");
-                num = sc.nextInt();
-            }while(num<1 || num>30);
-            a[i]=num;
+        //Ho inserito la verifica se un numero è stato già inserito se è così chiede nuovamente di inserire un numero
+        do {
+            System.out.println("Inserisci dimensione del vettore: ");
+            dim = sc.nextInt();
+        } while (dim < 8 || dim > 10);
+
+        int[] a = new int[dim];
+
+        for (int i = 0; i < a.length; i++) {
+            boolean found = false;
+            do{
+                do {
+                    System.out.println("Inserisci valori:");
+                    num = sc.nextInt();
+                } while (num < 1 || num > 30 || found);
+                found = true;
+                for (int j = 0; j < i; j++) {
+                    if (a[j] == num) {
+                        found = false;
+                    }
+                }
+            }while(found==false);
+            a[i] = num;
         }
 
         Ordina(a);
         Visualizza(a);
     }
-    public static void Ordina(int[]a)
-    {
+
+    public static void Ordina(int[] a) {
         int temp;
         int minPos;
 
-        for(int i=0; i<a.length; i++)
-        {
-            minPos=i;
-            if(a[i]%2==0)
-            {
-                for(int j=i+1; j<a.length; j++)
-                {
-                    if(a[j]%2==0)
-                    {
-                        if(a[minPos]>a[j])
-                        {
-                            minPos=j;
+        for (int i = 0; i < a.length; i++) {
+            minPos = i;
+            if (a[i] % 2 == 0) {
+                for (int j = i + 1; j < a.length; j++) {
+                    if (a[j] % 2 == 0) {
+                        if (a[minPos] > a[j]) {
+                            minPos = j;
                         }
                     }
                 }
             }
-            temp=a[i]; //ho corretto l'ordine delle variabili
-            a[i]=a[minPos];
-            a[minPos]=temp;
+            temp = a[i]; // ho corretto l'ordine delle variabili
+            a[i] = a[minPos];
+            a[minPos] = temp;
         }
     }
-    public static void Visualizza(int[]a)
-    {
-        for(int i=0; i<a.length; i++)
-        {
+
+    public static void Visualizza(int[] a) {
+        for (int i = 0; i < a.length; i++) {
             System.out.println(a[i]);
         }
     }
