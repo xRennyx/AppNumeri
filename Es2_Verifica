@@ -5,14 +5,14 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int dim;
         int num;
-        //Ho inserito la verifica se un numero è stato già inserito se è così chiede nuovamente di inserire un numero
+       
         do {
             System.out.println("Inserisci dimensione del vettore: ");
             dim = sc.nextInt();
         } while (dim < 8 || dim > 10);
 
         int[] a = new int[dim];
-
+         //Ho inserito la verifica se un numero è stato già inserito se è così chiede nuovamente di inserire un numero
         for (int i = 0; i < a.length; i++) {
             boolean trovato = false;
             do{
