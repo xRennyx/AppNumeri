@@ -1,0 +1,253 @@
+import java.util.Scanner;
+import static Tools.Utility.*;
+public class Main
+{
+    public static void main(String[] args)
+    {
+        int contaContatti = 0;
+        int maxContatti = 3;
+        boolean uscita = false;
+        Scanner sc = new Scanner(System.in);
+        Contatto[] Persona = new Contatto[maxContatti];
+        Contatto[] PersonaNascosta = new Contatto[maxContatti];
+        Contatto[] Chiamate = new Contatto[maxContatti];
+        Contatto[] ChiamateNascoste = new Contatto[maxContatti];
+        int contaChiamate = 0;
+        int contaChiamateNascoste = 0;
+        String[] opzioni = {"Gestore", "1-Inserisci Contatti", "2- Visualizza Contatti", "3-Sposta contatti", "4- Fai chiamata", "5-Chiamata Nascosta", "6-Visualizza Chiamate", "7- Fine"};
+        String password;
+        System.out.println("Imposta Password");
+        password = sc.nextLine();
+        do {
+            switch (menu(opzioni, sc)) {
+                case 1:
+                    if (contaContatti < maxContatti) {
+                        Contatto Newcontatto = LeggiContatto(sc);
+                        Persona[contaContatti] = Newcontatto;
+                        Contatto NewNascosto = LeggiNascosto(sc);
+                        PersonaNascosta[contaContatti] = NewNascosto;
+                        contaContatti++;
+                        break;
+                    }
+                case 2:
+                    if (contaContatti > 0) {
+                        Visualizza(Persona, PersonaNascosta, password, contaContatti, sc);
+                    }
+                    break;
+                case 3:
+                    if (contaContatti > 0) {
+                        SpostaContatti(Persona, PersonaNascosta, password, contaContatti, sc);
+                    } else {
+                        System.out.println("Nessun contatto disponibile per lo spostamento.");
+                    }
+
+
+                    break;
+                case 4:
+                    if (contaContatti > 0) {
+                        Contatto NewChiamata = FaiChiamata(Persona, contaContatti, sc, Chiamate, contaChiamate);
+                        Chiamate[contaChiamate] = NewChiamata;
+                        contaChiamate++;
+
+                    } else {
+                        System.out.println("Nessun contatto disponibile per effettuare una chiamata.");
+                    }
+                    break;
+                case 5:
+                    if (contaContatti > 0) {
+                        Contatto NewChiamataNascosta= ChiamateNascoste(PersonaNascosta, contaContatti, sc, password, ChiamateNascoste, contaChiamateNascoste);
+                        ChiamateNascoste[contaChiamateNascoste]=NewChiamataNascosta;
+                        contaChiamateNascoste++;
+                    }
+                    break;
+                case 6:
+                    VisualizzaChiamate(Chiamate, ChiamateNascoste, password, contaChiamate, contaChiamateNascoste, sc);
+                    break;
+                case 7:
+                    uscita = true;
+                    break;
+            }
+
+        } while (!uscita);
+    }
+
+    public static Contatto LeggiContatto(Scanner sc) {
+        Contatto Persona = new Contatto();
+        System.out.println("Inserisci il Nome: ");
+        Persona.nome = sc.nextLine();
+        System.out.println("Inserisci il Cognome: ");
+        Persona.cognome = sc.nextLine();
+        return Persona;
+    }
+
+    public static Contatto LeggiNascosto(Scanner sc) {
+        Contatto PersonaNascosta = new Contatto();
+        System.out.println("Inserisci il Nome contatto nascosto: ");
+        PersonaNascosta.nome = sc.nextLine();
+        System.out.println("Inserisci il Cognome contatto nascosto: ");
+        PersonaNascosta.cognome = sc.nextLine();
+        return PersonaNascosta;
+    }
+
+    public static void Visualizza(Contatto Persona[], Contatto PersonaNascosta[], String password, int contaContatti, Scanner sc) {
+        for (int i = 0; i < contaContatti; i++)
+        {
+            if (Persona[i] != null) {
+                System.out.println(Persona[i].Contact());
+            }
+        }
+        String passwordInserita;
+        System.out.println("Inserisci Password");
+        passwordInserita = sc.nextLine();
+        if (password.equals(passwordInserita)) {
+            for (int i = 0; i < contaContatti; i++) {
+                if (PersonaNascosta[i] != null) {
+                    System.out.println(PersonaNascosta[i].Contact());
+                }
+            }
+        }
+    }
+
+    public static void SpostaContatti(Contatto[] Persona, Contatto[] PersonaNascosta, String password, int contaContatti, Scanner sc) {
+        System.out.println("1. Sposta da Persona a PersonaNascosta");
+        System.out.println("2. Sposta da PersonaNascosta a Persona");
+        int scelta = sc.nextInt();
+        sc.nextLine(); // Pulisce il carattere di nuova riga
+
+        switch (scelta) {
+            case 1:
+                System.out.println("Inserisci il cognome del contatto da spostare:");
+                String cognomeDaNascondere = sc.nextLine();
+                boolean trovato1 = false;
+                for (int i = 0; i < contaContatti; i++) {
+                    if (Persona[i] != null && Persona[i].cognome.equals(cognomeDaNascondere)) {
+                        PersonaNascosta[i+1] = Persona[i];
+                        Persona[i] = null;
+                        System.out.println("Contatto spostato in PersonaNascosta.");
+                        trovato1 = true;
+                        break;
+                    }
+                }
+                if (!trovato1) {
+                    System.out.println("Contatto non trovato.");
+                }
+                break;
+            case 2:
+                System.out.println("Inserisci Password:");
+                String passwordInserita = sc.nextLine();
+                if (password.equals(passwordInserita)) {
+                    System.out.println("Inserisci il cognome del contatto da spostare:");
+                    String cognomeDaMostrare = sc.nextLine();
+                    boolean trovato2 = false;
+                    for (int i = 0; i < contaContatti; i++) {
+                        if (PersonaNascosta[i] != null && PersonaNascosta[i].cognome.equals(cognomeDaMostrare)) {
+                            Persona[i] = PersonaNascosta[i];
+                            PersonaNascosta[i] = null;
+                            System.out.println("Contatto spostato in Persona.");
+                            trovato2 = true;
+                            break;
+                        }
+                    }
+                    if (!trovato2) {
+                        System.out.println("Contatto non trovato.");
+                    }
+                } else {
+                    System.out.println("Password errata.");
+                }
+                break;
+        }
+    }
+
+    public static Contatto FaiChiamata(Contatto[] Persona, int contaContatti, Scanner sc, Contatto[] Chiamate, int contaChiamate) {
+        System.out.println("Inserisci il cognome del contatto da chiamare:");
+        String cognomeDaChiamare = sc.nextLine();
+        Contatto Chiamato = new Contatto();
+        boolean trovato = false;
+        for (int i = 0; i < contaContatti; i++) {
+            if (Persona[i] != null && Persona[i].cognome.equals(cognomeDaChiamare)) {
+                System.out.println("Chiamata effettuata a: " + Persona[i].nome + " " + Persona[i].cognome);
+                Chiamato = Persona[i];
+                trovato = true;
+                break;
+            }
+        }
+        if (!trovato) {
+            System.out.println("Contatto non trovato.");
+        }
+        return Chiamato;
+    }
+
+
+
+    public static Contatto ChiamateNascoste(Contatto[] PersonaNascosta, int contaContatti, Scanner sc, String password, Contatto[] ChiamateNascoste, int contaChiamateNascoste) {
+        System.out.println("Inserisci Password");
+        String passwordInserita = sc.nextLine();
+        Contatto ChiamatoNascosto =new Contatto();
+        if (password.equals(passwordInserita)) {
+            System.out.println("Inserisci il cognome del contatto da chiamare:");
+            String cognomeDaChiamare = sc.nextLine();
+            boolean trovato = false;
+            for (int i = 0; i < contaContatti; i++) {
+                if (PersonaNascosta[i] != null && PersonaNascosta[i].cognome.equals(cognomeDaChiamare)) {
+                    System.out.println("Chiamata effettuata a (contatto nascosto): " + PersonaNascosta[i].nome + " " + PersonaNascosta[i].cognome);
+                    ChiamatoNascosto = PersonaNascosta[i];
+                    trovato = true;
+                    break;
+                }
+            }
+            if (!trovato) {
+                System.out.println("Contatto nascosto non trovato.");
+            }
+        } else {
+            System.out.println("Password errata.");
+        }
+        return ChiamatoNascosto;
+    }
+
+
+
+    public static void VisualizzaChiamate(Contatto[] Chiamate, Contatto[] ChiamateNascoste, String password, int contaChiamate, int contaChiamateNascoste, Scanner sc) {
+        System.out.println("Chiamate effettuate:");
+        for (int i = 0; i < contaChiamate; i++) {
+            System.out.println("Chiamata a: " + Chiamate[i].nome + " " + Chiamate[i].cognome);
+        }
+        String passwordInserita;
+        System.out.println("Inserisci Password");
+        passwordInserita = sc.nextLine();
+        System.out.println("Chiamate effettuate a contatti nascosti:");
+        if (password.equals(passwordInserita)) {
+            for (int i = 0; i < contaChiamateNascoste; i++) {
+                System.out.println("Chiamata a (contatto nascosto): " + ChiamateNascoste[i].nome + " " + ChiamateNascoste[i].cognome);
+            }
+        } else {
+            System.out.println("Password errata.");
+        }
+    }
+
+}
+
+public class Contatto
+{
+    public String nome;
+    public String cognome;
+    public String Contact(){
+        return String.format("Nome: %s Cognome: %s", nome, cognome);
+    }
+}
+
+ public static int menu(String[] opzioni, Scanner tastiera) {
+        int scelta;
+        do {
+            ClrScr();
+            System.out.println("----" + opzioni[0] + "----");
+            for (int i = 1; i < opzioni.length; i++) {
+                System.out.println(opzioni[i]);
+            }
+            System.out.println("------------");
+            scelta = Integer.parseInt(tastiera.nextLine());
+            if (!(scelta >= 1 && scelta <= opzioni.length)) {
+                System.out.println("Scelta errata");
+            }
+        } while (!(scelta >= 1 && scelta <= opzioni.length));
+        return scelta;
+    }
