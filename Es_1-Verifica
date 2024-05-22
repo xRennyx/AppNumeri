@@ -5,7 +5,7 @@ public class Main
     public static void main(String[] args)
     {
         int contaContatti = 0;
-        int maxContatti = 3;
+        int maxContatti= 5;
         boolean uscita = false;
         Scanner sc = new Scanner(System.in);
         Contatto[] Persona = new Contatto[maxContatti];
