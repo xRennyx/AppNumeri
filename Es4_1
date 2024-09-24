@@ -1,0 +1,99 @@
+import static utility.tools.*;
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner tastiera = new Scanner(System.in);
+        String[] opzioni = {"Menu", "1 Genera Random", "2 Visualizzazione","3 Cerca Numero", "4 Fine"};
+        boolean esci = true;
+        int[] nEstratti = null;
+        final int MAXNUMERI = 51;
+        int[] nEstratti2 = new int[MAXNUMERI];
+        //int[] nEstratti2;
+        do {
+            switch (Menu(opzioni, tastiera)) {
+                case 1:
+                    System.out.println("Generazione");
+                /*for (int i=0; i<MAXNUMERI; i++)
+                    nGenerati[i] = numeroRandom.nextInt(0,MAXNUMERI)+1;
+                 */
+                    generaNumeri2(nEstratti2);
+                    break;
+                case 2:
+                    System.out.println("Visualizzazione");
+                    Visualizza(nEstratti2);
+                    break;
+                case 3:
+                    System.out.println("Cerca Numero");
+                    CercaNumero(nEstratti2, tastiera);
+                    break;
+                case 4:
+                    System.out.println("Fine");
+                    esci = false;
+                    break;
+            }
+        } while (esci);
+    }
+
+    public static int[] generaNumeri(int nNumeri) {
+        Random numeroRandom = new Random();
+        int[] nGenerati = new int[nNumeri];
+        for (int i = 0; i < nNumeri; i++)
+            nGenerati[i] = numeroRandom.nextInt(0, nNumeri) + 1;
+        return nGenerati;
+    }
+    public static void generaNumeri2(int[] vettore) {
+        Random numeroRandom = new Random();
+        int i=0;
+         do
+         {
+            int numero = numeroRandom.nextInt(1, vettore.length + 1);
+            boolean duplicato = false;
+
+
+            for (int j = 0; j < i; j++) {
+                if (vettore[j] == numero) {
+                    duplicato = true;
+                }
+            }
+
+            if (!duplicato) {
+                vettore[i] = numero;
+                i++;
+            }
+        }while (i < vettore.length);
+    }
+    public static void Visualizza(int[] vettore)
+    {
+
+        for(int i=0; i< vettore.length; i++)
+        {
+            System.out.print(" "+vettore[i]);
+            if(i!=0 && i%10==0)
+                System.out.print("\n");
+        }
+    }
+    public static void CercaNumero(int[] vettore, Scanner sc)
+    {
+        int numero;
+        boolean presente= false;
+
+        System.out.println("Inserisci il numero da trovare: ");
+        numero=(Integer.parseInt(sc.nextLine()));
+
+        for(int i=0; i<vettore.length; i++)
+        {
+            if(numero==vettore[i])
+            {
+                presente = true;
+                System.out.println("Il numero: "+numero+" è presente nella posizione: "+i);
+            }
+        }
+        if(presente==false)
+        {
+            System.out.println("Il numero non è presente");
+        }
+    }
+
+}
