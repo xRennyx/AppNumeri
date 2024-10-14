@@ -1,0 +1,73 @@
+import mensola.Libro;
+import FrontScreen.FrontEnd;
+import static Utility.Tools.*;
+import java.awt.*;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner tastiera = new Scanner(System.in);
+        final int MAXLIBRI = 3;
+        Libro[] mensola = new Libro[MAXLIBRI];
+        boolean esci=true;
+
+        int i = 0; // numero di libri
+        double costoTotale = 0.0;
+        String[] opzioni={"SELEZIONA UN'OPZIONE", "1-INSERIMENTO", "2-VISUALIZZA"};
+
+        do
+        {
+            switch (Menu(opzioni, tastiera))
+            {
+                case 1 ->
+                {
+                    newLibro(mensola, tastiera, MAXLIBRI);
+                    for(i=0; i< mensola.length; i++)
+                    costoTotale += mensola[i].pagine * mensola[i].PREZZOPAGINA;
+                }
+
+
+                case 2->visualizza(mensola);
+
+
+            }
+        }while(esci==true);
+
+        // Visualizza il numero totale di libri e il costo totale
+        System.out.println("Hai aggiunto un totale di " + i + " libri");
+        System.out.printf("Il costo totale dei libri è: %f euro", costoTotale);
+
+
+    }
+    public static Libro[] newLibro(Libro[] mensola, Scanner tastiera, int MaxNumeri)
+    {
+        boolean aggiungi=true;
+        int i=0;
+        do
+        {
+            mensola[i]=FrontEnd.LeggiLibro(tastiera);
+            if(i>0) {
+                for (int j = 0; j < i; j++) {
+                    if (mensola[i].Autore == mensola[j].Autore || mensola[i].Titolo == mensola[j].Titolo) {
+                        System.out.println("Autore e titolo già presenti");
+                        aggiungi = false;
+                    }
+                }
+                if (aggiungi == true) {
+                    i++;
+                }
+            }
+        }while(i!=3);
+
+    return mensola;
+    }
+
+
+    public static void visualizza (Libro[] mensola)
+    {
+        for(Libro libro: mensola)
+        {
+            System.out.println(libro.FormattaDati());
+        }
+    }
+}
