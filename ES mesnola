@@ -13,7 +13,7 @@ public class Main {
         boolean esci=true;
         int contalibri=0;
         double costoTotale = 0.0;
-        String[] opzioni={"SELEZIONA UN'OPZIONE", "1-INSERIMENTO", "2-VISUALIZZA", "3-CANCELLA LIBRO", "4-RICERCA", "5-MODIFICA DATA", "6-Ricerca PER TITOLO","7-ESCI"};
+        String[] opzioni={"SELEZIONA UN'OPZIONE", "1-INSERIMENTO", "2-VISUALIZZA", "3-CANCELLA LIBRO", "4-RICERCA", "5-MODIFICA DATA", "6-Ricerca PER TITOLO","7-RICERCA AUTORE", "8-RIMUOVI LIBRI APPARTENENTI AD AUTORE", "9-ESCI"};
 
         do
         {
@@ -85,7 +85,38 @@ public class Main {
                         System.out.println(e.getMessage());
                     }
                 }
-                case 7-> esci=false;
+                case 7->
+                {
+                    try
+                    {
+                        System.out.println("Inserisci il l'Autore del libro da cercare:");
+                        String Autore = tastiera.nextLine();
+                        Libro[] LibriTrovati=Findall(mensola, Autore, contalibri);
+                        System.out.println("Libri Appartenenti all'autore");
+                        for(Libro libro: LibriTrovati)
+                        {
+                            if (libro != null) {
+                                System.out.println(libro.FormattaDati());
+                            }
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println(e.getMessage());
+                    }
+                }
+                case 8->
+                {
+                    System.out.println("Inserisci il l'Autore del libro da rimuovere:");
+                    String Autore = tastiera.nextLine();
+                    Libro[] newMensola=RemuveAll(mensola, Autore, contalibri);
+                    System.out.println("Nuova mensola senza autore: ");
+                        for (Libro libro : newMensola)
+                        {
+                            System.out.println(libro.FormattaDati());
+                        }
+                }
+                case 9-> esci=false;
                 }
 
 
@@ -109,9 +140,12 @@ public class Main {
         }
     }
     public static boolean cancellaLibro(Libro[] mensola, String titolo, String autore, int contalibri) {
-        for (int i = 0; i < contalibri; i++) {
-            if (mensola[i].Titolo.equals(titolo) && mensola[i].Autore.equals(autore)) {
-                for (int j = i; j < contalibri - 1; j++) {
+        for (int i = 0; i < contalibri; i++)
+        {
+            if (mensola[i].Titolo.equals(titolo) && mensola[i].Autore.equals(autore))
+            {
+                for (int j = i; j < contalibri - 1; j++)
+                {
                     mensola[j] = mensola[j + 1];
                 }
                 mensola[contalibri - 1] = null;
@@ -155,5 +189,39 @@ public class Main {
             }
         }
         throw new Exception("Libro non trovato");
+    }
+    public static Libro[] Findall(Libro[] mensola, String Autore, int contalibri) throws Exception
+    {
+        Libro[] LibriTrovati= new Libro[contalibri];
+        for (int i = 0; i < contalibri; i++)
+        {
+            if (mensola[i].Autore.equals(Autore))
+            {
+                LibriTrovati[i]=mensola[i];
+            }
+        }
+        throw new Exception("Autore non trovato");
+    }
+    public static Libro[] RemuveAll(Libro[] mensola, String Autore, int contalibri)
+    {
+        int newContalibri=0;
+        for(int i=0; i<contalibri; i++)
+        {
+            if(!mensola[i].Autore.equals(Autore))
+            {
+                newContalibri++;
+            }
+        }
+        Libro[] nuovaMensola=new Libro[newContalibri];
+        int j=0;
+        for(int i=0; i<contalibri; i++)
+        {
+            if(!mensola[i].Autore.equals(Autore))
+            {
+                nuovaMensola[j]=mensola[i];
+                j++;
+            }
+        }
+    return nuovaMensola;
     }
 }
