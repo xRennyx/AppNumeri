@@ -1,0 +1,87 @@
+import java.util.Scanner;
+import mensola.Libro;
+import static utility.Tools.*;
+import frontScreen.FrontEnd;
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.ArrayList;
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        ArrayList<Libro> mensola= new ArrayList<>();
+        boolean esci=false;
+        String[] opzioni={"SCEGLI OPZIONI", "INSERISCI", "VISUALIZZA", "RICERCA", "ESCI"};
+        do
+        {
+            switch (Menu(opzioni, sc)) {
+                case 1 ->
+                {
+                    Libro nuovoLibro = FrontEnd.LeggiLibro(sc);
+
+                    if(controllo(mensola, nuovoLibro))
+                    {
+                        mensola.add(nuovoLibro);
+                    }
+                    else
+                    {
+                        System.out.println("Libro già presente");
+                    }
+
+                }
+                case 2-> visualizza(mensola);
+                case 3->
+                {
+                    System.out.println("Inserisci Autore da Ricercare: ");
+                    String Autore= sc.nextLine();
+                    System.out.println("Insersci il titolo da ricercare: ");
+                    String Titolo=sc.nextLine();
+                    try
+                    {
+                        Libro[] libroTrovato=mensola.
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println(e.getMessage());
+                    }
+
+                }
+                case 4-> esci=true;
+            }
+        }while(!esci);
+    }
+    public static boolean controllo(ArrayList<Libro> mensola, Libro nuovolibro)
+    {
+        boolean presente=true;
+        for(int i=0; i< mensola.size(); i++)
+        {
+            if (mensola.get(i).Autore.equals(nuovolibro.Autore) && mensola.get(i).Titolo.equals(nuovolibro.Titolo)) {
+                presente = false;
+            }
+        return presente;
+        }
+
+
+    return presente;
+    }
+    public static void visualizza(ArrayList<Libro> mensola)
+    {
+        for(Libro libro : mensola)
+        {
+            System.out.println(libro.FormattaDati());
+        }
+    }
+    public static int ricerca (ArrayList<Libro> mensola, String Autore, String Titolo)throws Exception
+    {
+        int pos=0;
+        for(int i=0; i<mensola.size(); i++)
+        {
+            if(mensola.get(i).Autore.equals(Autore) && mensola.get(i).Titolo.equals(Titolo))
+            {
+                return pos=i;
+            }
+        }
+    throw new Exception("Libro non trovato");
+    }
+}
