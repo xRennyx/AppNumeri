@@ -1,7 +1,9 @@
 import java.util.Scanner;
-import mensola.Libro;
+
 import static utility.Tools.*;
 import frontScreen.FrontEnd;
+import mensola.Libro;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -13,7 +15,7 @@ public class Main
         Scanner sc=new Scanner(System.in);
         ArrayList<Libro> mensola= new ArrayList<>();
         boolean esci=false;
-        String[] opzioni={"SCEGLI OPZIONI", "INSERISCI", "VISUALIZZA", "RICERCA", "CANCELLA LIBRO", "MODIFICA DATA", "RICERCA TITOLO", "RICERCA AUTORE", "RIMUOVI LIBRI APPARTENENTI ALL'AUTORE", "INSERISCI LIBRO 2", "MODIFICA NUMERO PAGINE", "ESCI"};
+        String[] opzioni={"SCEGLI OPZIONI", "INSERISCI", "VISUALIZZA", "RICERCA", "CANCELLA LIBRO", "MODIFICA DATA", "RICERCA TITOLO", "RICERCA AUTORE", "RIMUOVI LIBRI APPARTENENTI ALL'AUTORE","VISUALIZZA LIBRI PRECEDENTI","VISUALIZZA SUCCESSIVI", "ESCI"};
         do
         {
             switch (Menu(opzioni, sc)) {
@@ -126,58 +128,26 @@ public class Main
                 }
                 case 9->
                 {
-                    Libro Nuovolibro= FrontEnd.LeggiLibro(sc);
-                    /*try
+                    System.out.println("Inserisci la posizione da cui cercare: ");
+                    int index;
+                    do
                     {
-                        presente(mensola, Nuovolibro);
-                        mensola.add(Nuovolibro);
-                    }catch (Exception e)
-                    {
-                        System.out.println(e.getMessage());
-                    }*/
-                    if(mensola.indexOf(Nuovolibro)==-1)
-                    {
-                        mensola.add(Nuovolibro);
-                    }
+                        index=Integer.parseInt(sc.nextLine());
+                    }while(index>mensola.size());
+                    VisualizzaPrecedenti(mensola, index);
+
                 }
                 case 10->
                 {
-                    System.out.println("Inserisci l'autore del libro ma modificarne le pagine:");
-                    String autore = sc.nextLine();
-                    System.out.println("Inserisci il titolo del libro:");
-                    String titolo = sc.nextLine();
-                    try
+                    System.out.println("Inserisci la posizione da cui cercare: ");
+                    int index;
+                    do
                     {
-                        modificaPagine(mensola, autore, titolo, sc);
-                    }catch(Exception e)
-                    {
-                        System.out.println(e.getMessage());
-                    }
+                        index=Integer.parseInt(sc.nextLine());
+                    }while(index>mensola.size());
+                    VisualizzaSuccessivi(mensola, index);
                 }
-                case 11->
-                {
-
-                    try
-                    {
-                            System.out.println("Inserisci il prezzo del libro da cercare:");
-                            double prezzo=Double.parseDouble(sc.nextLine());
-                            ArrayList<Libro> LibriTrovati= visualizzaPrezzo(mensola, prezzo);
-                            System.out.println("Libri con quel prezzo");
-                            for(Libro libro: LibriTrovati)
-                            {
-                                if (libro != null)
-                                {
-                                    System.out.println(libro.FormattaDati());
-                                }
-                            }
-                    }
-                    catch(Exception e)
-                    {
-                        System.out.println(e.getMessage());
-                    }
-
-                }
-                case 12->esci=true;
+                case 11-> esci=true;
             }
         }while(!esci);
     }
@@ -186,8 +156,7 @@ public class Main
         boolean presente=true;
         for(int i=0; i< mensola.size(); i++)
         {
-            if (mensola.get(i).Autore.equals(nuovolibro.Autore) && mensola.get(i).Titolo.equals(nuovolibro.Titolo))
-            {
+            if (mensola.get(i).Autore.equals(nuovolibro.Autore) && mensola.get(i).Titolo.equals(nuovolibro.Titolo)) {
                 presente = false;
             }
             return presente;
@@ -202,17 +171,17 @@ public class Main
     }
     public static int ricerca (ArrayList<Libro> mensola, String Autore, String Titolo)throws Exception
     {
+        int pos=0;
         for(int i=0; i<mensola.size(); i++)
         {
             if(mensola.get(i).Autore.equals(Autore) && mensola.get(i).Titolo.equals(Titolo))
             {
-                return i;
+                return pos=i;
             }
         }
         throw new Exception("Libro non trovato");
     }
-    public static void cancellaLibro(ArrayList<Libro> mensola, String Titolo, String Autore) throws Exception
-    {
+    public static void cancellaLibro(ArrayList<Libro> mensola, String Titolo, String Autore) throws Exception {
         boolean rimuovi = mensola.removeIf(m ->m.Titolo.equals(Titolo) && m.Autore.equals(Autore));
         if (!rimuovi)
         {
@@ -223,8 +192,7 @@ public class Main
     {
         for (Libro libro : mensola)
         {
-            if (libro.Autore.equals(Autore) && libro.Titolo.equals(Titolo))
-            {
+            if (libro.Autore.equals(Autore) && libro.Titolo.equals(Titolo)) {
                 System.out.println("Inserisci la nuova data di pubblicazione (formato: gg-mm-aaaa):");
                 LocalDate nuovaData = LocalDate.parse(sc.nextLine(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                 libro.dataDiPubblicazione = nuovaData;
@@ -235,10 +203,8 @@ public class Main
     }
     public static int FindIndex(ArrayList<Libro> mensola, String Titolo) throws Exception
     {
-        for (int i = 0; i < mensola.size(); i++)
-        {
-            if (mensola.get(i).Titolo.equals(Titolo))
-            {
+        for (int i = 0; i < mensola.size(); i++) {
+            if (mensola.get(i).Titolo.equals(Titolo)) {
                 return i;
             }
         }
@@ -247,15 +213,12 @@ public class Main
     public static ArrayList<Libro> FindAll(ArrayList<Libro> mensola, String Autore) throws Exception
     {
         ArrayList<Libro> LibriTrovati = new ArrayList<>();
-        for (Libro libro : mensola)
-        {
-            if (libro.Autore.equals(Autore))
-            {
+        for (Libro libro : mensola) {
+            if (libro.Autore.equals(Autore)) {
                 LibriTrovati.add(libro);
             }
         }
-        if (LibriTrovati.isEmpty())
-        {
+        if (LibriTrovati.isEmpty()) {
             throw new Exception("Autore non trovato");
         }
         return LibriTrovati;
@@ -265,51 +228,20 @@ public class Main
         mensola.removeIf(libro -> libro.Autore.equals(Autore));
         return mensola;
     }
-    public static int presente (ArrayList<Libro> mensola, Libro nuovoLibro) throws Exception
+    public static void VisualizzaPrecedenti(ArrayList<Libro> mensola, int index)
     {
-        for(int i=0; i< mensola.size(); i++)
+        for(int i=index; i>= 0; i--)
         {
-            if (mensola.get(i).Autore.equals(nuovoLibro.Autore) && mensola.get(i).Titolo.equals(nuovoLibro.Titolo))
-            {
-                return i;
-            }
+            System.out.println(mensola.get(i).FormattaDati());
         }
-    throw new Exception("Libro già presente");
     }
-    public static void modificaPagine(ArrayList<Libro> mensola, String Autore, String Titolo, Scanner sc) throws Exception
+    public static void VisualizzaSuccessivi(ArrayList<Libro> mensola, int index)
     {
-        boolean modifica=false;
-        for (Libro libro : mensola)
+        for(int i=index; i< mensola.size(); i++)
         {
-            if (libro.Autore.equals(Autore) && libro.Titolo.equals(Titolo))
-            {
-                System.out.println("Inserisci nuovo numero di pagine:");
-                libro.pagine = (Integer.parseInt(sc.nextLine()));
-                System.out.println("Pagine Aggiornate");
-                modifica=true;
-            }
+            System.out.println(mensola.get(i).FormattaDati());
         }
-        if(!modifica)
-        {
-            throw new Exception("Libro non trovato");
-        }
+    }
 
-    }
-    public static ArrayList<Libro> visualizzaPrezzo (ArrayList<Libro> mensola, double prezzo) throws Exception
-    {
-        ArrayList<Libro> LibriTrovati = new ArrayList<>();
-        for (Libro libro : mensola)
-        {
-            if (libro.PREZZOPAGINA*libro.pagine==prezzo)
-            {
-                LibriTrovati.add(libro);
-            }
-        }
-        if (LibriTrovati.isEmpty())
-        {
-            throw new Exception("Autore non trovato");
-        }
-        return LibriTrovati;
-    }
 
 }
