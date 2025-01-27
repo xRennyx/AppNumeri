@@ -1,0 +1,16 @@
+[
+  {
+    "autore": "a",
+    "titolo": "b",
+    "nPagine": 23,
+    "costoPagine": 0.05,
+    "tipo": "ROMANZO"
+  },
+  {
+    "autore": "d",
+    "titolo": "f",
+    "nPagine": 34,
+    "costoPagine": 0.05,
+    "tipo": "MANUALE"
+  }
+]
