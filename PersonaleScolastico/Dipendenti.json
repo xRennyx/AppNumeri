@@ -1,0 +1,41 @@
+{
+  "scuola": [
+    {
+      "nominativo": "Giuseppe",
+      "genere": "M",
+      "indirizzo": "Via dei Pini 92",
+      "incentivo": 0.5
+    },
+    {
+      "ruolo": "ITP",
+      "disciplina": "Informatica",
+      "nominativo": "Enrico",
+      "genere": "M",
+      "indirizzo": "Viale dei Mille",
+      "incentivo": 0.5
+    },
+    {
+      "ruolo": "ITP",
+      "disciplina": "Informatica",
+      "nominativo": "Enricone",
+      "genere": "M",
+      "indirizzo": "Viale dei Mille",
+      "incentivo": 0.5
+    },
+    {
+      "ufficio": "trabajo",
+      "nominativo": "Rodolfo",
+      "genere": "F",
+      "indirizzo": "Brontolo",
+      "incentivo": 0.5
+    },
+    {
+      "ufficio": "trabajo",
+      "nominativo": "Henry",
+      "genere": "F",
+      "indirizzo": "Brontolo",
+      "incentivo": 0.5
+    }
+  ],
+  "nome": "IIS VIOLA MARCHESINI"
+}
