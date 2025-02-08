@@ -1,7 +1,6 @@
 package frontend;
 
-import backend.Genere;
-import backend.Libro;
+import backend.*;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -57,7 +56,7 @@ public class Tools {
 
     public static Libro leggiLibro(Scanner tastiera, boolean soluzioni) {
         Genere[] tipoGenere = Genere.values();
-        String[] sceltaGenere = {"GENERE", "ROMANZO", "MANUALE", "THRILLER", "GENERICO"};
+        String[] sceltaGenere = {"GENERE", "ROMANZO", "MANUALE", "THRILLER"};
 
 
         System.out.print("Inserisci l'autore del libro: ");
@@ -70,11 +69,60 @@ public class Tools {
         System.out.println("Inserisci il tipo del libro: ");
 //         Menu(sceltaGenere, tastiera);
         Genere tipo = tipoGenere[Menu(sceltaGenere, tastiera) - 1]; // visto che Menu parte da indice 1
-
-
-//        Libro l = new Libro(autore, titolo, nPagine, tipo);
-//        return l;
-        return new Libro(autore, titolo, nPagine, tipo);
+        if(tipo.equals(Genere.MANUALE))
+        {
+            System.out.println("Inserisci argomento: ");
+            String argomento=tastiera.nextLine();
+            System.out.println("Inserisci livello:\n1-BASE\n2-PRINCIPIANTE\n3-ESPERTO");
+            int scelta= Integer.parseInt(tastiera.nextLine());
+            Livello l;
+            if(scelta==1)
+            {
+                l=Livello.BASE;
+            }
+            else if (scelta==2)
+            {
+                l=Livello.PRINCIPIANTE;
+            }
+            else
+            {
+                l=Livello.ESPERTO;
+            }
+            return new Manuale(autore, titolo, nPagine, tipo, argomento, l);
+        }
+        else if(tipo.equals(Genere.THRILLER))
+        {
+            System.out.println("Deriva da serie TV?\n1-Si\n2-No");
+            int scelta= Integer.parseInt(tastiera.nextLine());
+            boolean TV;
+            if(scelta==1)
+            {
+                TV=true;
+            }
+            else
+            {
+                TV=false;
+            }
+            return new Thriller(autore, titolo, nPagine, tipo, TV);
+        }
+        else
+        {
+            System.out.println("Inserisci genere letterario:\n1-STORICO\n2-FANTASY\n3-ARMONY");
+            int scelta=Integer.parseInt(tastiera.nextLine());
+            Lettarario l;
+            if(scelta==1)
+            {
+                l=Lettarario.STORICO;
+            } else if (scelta==2)
+            {
+                l=Lettarario.FANTASY;
+            }
+            else
+            {
+                l=Lettarario.ARMONY;
+            }
+            return new Romanzo(autore, titolo, nPagine, tipo, l);
+        }
 
     }
 

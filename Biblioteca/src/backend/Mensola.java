@@ -88,11 +88,6 @@ public class Mensola {
         return trovato;
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
     public void salvaJson(String fileName) {
 
         try {

@@ -57,6 +57,6 @@ public class Libro {
 
     @Override
     public String toString() {
-        return String.format("Autore: %s Titolo: %s Numero Pagine: %d Costo: %f", autore, titolo, nPagine, costoPagine * nPagine);
+        return String.format("Autore: %s Titolo: %s Numero Pagine: %d Costo: %f, Tipo: %s", autore, titolo, nPagine, costoPagine * nPagine, tipo);
     }
 }
