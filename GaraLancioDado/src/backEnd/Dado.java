@@ -13,8 +13,8 @@ public class Dado
 
     public Dado(int nFacce, int valLancio)
     {
-            this.nFacce = nFacce;
-            this.valLancio=valLancio;
+        this.nFacce = nFacce;
+        this.valLancio=valLancio;
     }
 
     public int getnFacce() {
