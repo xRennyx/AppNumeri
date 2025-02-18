@@ -4,7 +4,7 @@ public class Gara
 {
     public boolean fineGara(int roundFatti, int round)
     {
-        return roundFatti==round;
+        return !(roundFatti==round);
     }
     public String round(Giocatore giocatore1, Giocatore giocatore2,Dado dado1, Dado dado2)
     {
@@ -21,6 +21,20 @@ public class Gara
             return "Round in parità";
         }
     }
+    public void vincitoreRound(Giocatore giocatore1, Giocatore giocatore2, Dado dado1, Dado dado2) {
+        if (dado1.getValLancio() < dado2.getValLancio()) {
+            giocatore2.incrementaVittorie();
+        } else if (dado1.getValLancio() > dado2.getValLancio()) {
+            giocatore1.incrementaVittorie();
+        }
+        else
+        {
+            giocatore1.incrementaVittorie();
+            giocatore2.incrementaVittorie();
+        }
+    }
+
+
     public String gameWin(Giocatore giocatore, Giocatore giocatore2)
     {
         if(giocatore.getVittorie()<giocatore2.getVittorie())
