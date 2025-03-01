@@ -4,22 +4,26 @@ public class Giocatore {
     private String nome;
     private int vittorie;
 
-    public Giocatore(String nome) {
+    public Giocatore(String nome)
+    {
         this.nome = nome;
     }
 
-    public String getNome() {
+    public String getNome()
+    {
         return nome;
     }
 
-    public int getVittorie() {
+    public int getVittorie()
+    {
         return vittorie;
     }
-
-    public void setVittorie(int vittorie) {
-        this.vittorie = vittorie;
-    }
-    public void incrementaVittorie() {
+    public void incrementaVittorie()
+    {
         this.vittorie++;
+    }
+    public void reset()
+    {
+        vittorie=0;
     }
 }

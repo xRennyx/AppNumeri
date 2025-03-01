@@ -4,7 +4,8 @@ import backEnd.*;
 
 import java.util.Scanner;
 
-public class Dati {
+public class Dati
+{
     public static Dado LeggiDato() throws Exception
     {
         Scanner sc= new Scanner(System.in);
