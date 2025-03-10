@@ -13,6 +13,10 @@ abstract public class ProdottoElettronico implements Cloneable
         this.prezzo = prezzo;
     }
 
+    public void setPrezzo(double prezzo) {
+        this.prezzo = prezzo;
+    }
+
     public String getCode() {
         return code;
     }

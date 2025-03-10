@@ -12,6 +12,6 @@ public class Smartphone extends ProdottoElettronico
     @Override
     public String toString()
     {
-        return String.format(super.toString()+ "Modello: %s, Memoria %.1f GB", modello, memoriaGB);
+        return String.format(super.toString()+ " Modello: %s, Memoria %.1f GB", modello, memoriaGB);
     }
 }

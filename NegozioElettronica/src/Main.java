@@ -1,4 +1,5 @@
-import backEnd.NegozioElettronica;
+import backEnd.Negozio;
+import backEnd.Negozio;
 import backEnd.ProdottoElettronico;
 import backEnd.Smartphone;
 import frontEnd.Tools;
@@ -11,7 +12,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        NegozioElettronica n = new NegozioElettronica();
+        Negozio n = new Negozio();
         Scanner sc = new Scanner(System.in);
         boolean esci = false;
         String[] opzioni = {"SCEGLI OPZIONE", "INSERISCI", "VISUALIZZA", "RICERCA", "RIMUOVI", "MODIFICA PREZZO", "ESCI"};
@@ -34,11 +35,19 @@ public class Main {
                         System.out.println(n.ricerca(code));
 
                     }
-                    case 4 -> {
-
+                    case 4 ->
+                    {
+                        System.out.println("Inserisci codice da ricercare: ");
+                        String code=sc.nextLine();
+                        n.rimuovi(code);
                     }
-                    case 5 -> {
-
+                    case 5 ->
+                    {
+                        System.out.println("Inserisci codice da ricercare: ");
+                        String code=sc.nextLine();
+                        System.out.println("Inserisci Prezzo: ");
+                        double prezzo= Double.parseDouble(sc.nextLine());
+                        n.modificaPrezzo(code, prezzo);
                     }
                     case 6 -> {
                         esci = true;
