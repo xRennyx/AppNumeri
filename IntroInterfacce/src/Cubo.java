@@ -1,4 +1,5 @@
-public class Cubo extends Solido{
+public class Cubo extends Solido implements Validatore
+{
     private double lato;
     protected Cubo(double pesoSpecifico, double lato) {
         super(pesoSpecifico);

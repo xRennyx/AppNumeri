@@ -34,5 +34,4 @@ abstract public class Solido implements Cloneable, CorpoSolido
     public Solido clone() throws CloneNotSupportedException {
         return (Solido) super.clone();
     }
-
 }
