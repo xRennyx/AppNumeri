@@ -1,6 +1,6 @@
 package backEnd;
 
-abstract public class ProdottoElettronico implements Cloneable
+abstract public class ProdottoElettronico implements Cloneable, Prodotto
 {
     private String code;
     private String marca;
@@ -13,10 +13,7 @@ abstract public class ProdottoElettronico implements Cloneable
         this.prezzo = prezzo;
     }
 
-    public void setPrezzo(double prezzo) {
-        this.prezzo = prezzo;
-    }
-
+    @Override
     public String getCode() {
         return code;
     }
@@ -36,8 +33,8 @@ abstract public class ProdottoElettronico implements Cloneable
     }
 
     @Override
-    public ProdottoElettronico clone() throws CloneNotSupportedException {
-        return (ProdottoElettronico) super.clone();
+    public Prodotto clone() throws CloneNotSupportedException {
+        return (Prodotto) super.clone();
     }
     @Override
     public boolean equals(Object obj)
@@ -47,5 +44,10 @@ abstract public class ProdottoElettronico implements Cloneable
             return this.code.equals(((ProdottoElettronico) obj).code);
         }
         return false;
+    }
+
+    @Override
+    public void setPrezzo(double prezzo) {
+        this.prezzo = prezzo;
     }
 }

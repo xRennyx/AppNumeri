@@ -1,7 +1,6 @@
-import backEnd.Negozio;
-import backEnd.Negozio;
-import backEnd.ProdottoElettronico;
-import backEnd.Smartphone;
+
+import backEnd.*;
+import backEnd.NegozioElettronica;
 import frontEnd.Tools;
 
 import static frontEnd.Tools.*;
@@ -12,7 +11,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Negozio n = new Negozio();
+        NegozioElettronica n = new NegozioElettronica();
         Scanner sc = new Scanner(System.in);
         boolean esci = false;
         String[] opzioni = {"SCEGLI OPZIONE", "INSERISCI", "VISUALIZZA", "RICERCA", "RIMUOVI", "MODIFICA PREZZO", "ESCI"};
@@ -26,7 +25,7 @@ public class Main {
                     }
                     case 2 ->
                     {
-                        ArrayList<ProdottoElettronico>visualizza=n.visualizza();
+                        ArrayList<Prodotto>visualizza=n.visualizza();
                         visualizza.forEach(v-> System.out.println(v.toString()));
                     }
                     case 3 -> {

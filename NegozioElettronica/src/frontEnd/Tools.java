@@ -64,18 +64,52 @@ public class Tools {
         String marca=sc.nextLine();
         System.out.println("Inserisci Prezzo: ");
         double prezzo= Double.parseDouble(sc.nextLine());
-        System.out.println("Inserisci Modello: ");
-        String modello= sc.nextLine();
-        System.out.println("Inserisci Memoria in GB: ");
-        double memoria= Double.parseDouble(sc.nextLine());
-        if(prezzo>0 && memoria> 0)
+        System.out.println("1-Smartphone\n2-PC");
+        int scelta=Integer.parseInt(sc.nextLine());
+        switch (scelta)
         {
-            return new Smartphone(code, marca, prezzo, modello, memoria);
+            case 1-> {
+                System.out.println("Inserisci Modello: ");
+                String modello = sc.nextLine();
+                System.out.println("Inserisci Memoria in GB: ");
+                double memoria = Double.parseDouble(sc.nextLine());
+                if (prezzo > 0 && memoria > 0) {
+                    return new Smartphone(code, marca, prezzo, modello, memoria);
+                } else {
+                    throw new Exception("Prezzo e Memoria devono essere maggiori di 0");
+                }
+            }
+            case 2->
+            {
+                System.out.println("Inserisci Processore: ");
+                String processore=sc.nextLine();
+                System.out.println("Inserisci HDD: ");
+                double HDD= Double.parseDouble(sc.nextLine());
+                return new PC(code, marca, prezzo, processore, HDD);
+            }
         }
-        else
-        {
-            throw new Exception("Prezzo e Memoria devono essere maggiori di 0");
-        }
+        return null;
+    }
+
+    public static Libro leggiLibro()
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Inserisci Nome: ");
+        String nome= sc.nextLine();
+        System.out.println("Inserisci Descrizione: ");
+        String Descrizione= sc.nextLine();
+        System.out.println("Inserisci Autore: ");
+        String autore= sc.nextLine();
+        System.out.println("Inserisci ISBN: ");
+        int ISBN= sc.nextInt();
+        System.out.println("Inserisci Prezzo: ");
+        double prezzo= sc.nextDouble();
+        System.out.println("Inserisci Quantità: ");
+        int quantita= sc.nextInt();
+        System.out.println("Inserisci Argmento: ");
+        String argpmento= sc.nextLine();
+        return new Manuale(nome, Descrizione, autore, ISBN, prezzo, quantita, argpmento);
+
     }
 
 
