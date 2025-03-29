@@ -1,6 +1,6 @@
 package backend;
 
-abstract public class Scuola
+abstract public class Scuola implements Cloneable
 {
     private String code;
     private String denominazione;
@@ -52,5 +52,9 @@ abstract public class Scuola
     public String toString()
     {
         return String.format("Codice: %s, Denominazione: %s, Indirizzo: %s, Numero Studneti: %d, Numero Classi: %s, Numero Sedi: %d, Numero Laboratori: %d, Contributo: %.2f", code, denominazione, indirizzo, nStudenti, nClassi, extraSedi,nLaboratori, contributo());
+    }
+    @Override
+    public Scuola clone() throws CloneNotSupportedException {
+        return (Scuola) super.clone();
     }
 }
