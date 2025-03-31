@@ -12,6 +12,6 @@ public class Manuale extends Libro
     @Override
     public String toString()
     {
-        return String.format(super.toString()+" Argomento: %s",argomento);
+        return String.format(super.toString()+" Argomento: %s, Tipo: Tipo: Manuale",argomento);
     }
 }

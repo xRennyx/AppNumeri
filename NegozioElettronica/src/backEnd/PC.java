@@ -12,6 +12,6 @@ public class PC extends ProdottoElettronico{
     @Override
     public String toString()
     {
-        return String.format(super.toString()+ " Processore: %s, HDD: %.1f GB", processore, HDD);
+        return String.format(super.toString()+ " Processore: %s, HDD: %.1f GB, Tipo: PC", processore, HDD);
     }
 }

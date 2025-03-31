@@ -16,7 +16,7 @@ public class NegozioElettronica {
     public void inserisciProdotto(Prodotto p) throws Exception {
         boolean uguale = false;
         for (Prodotto pr : negozio) {
-            if (pr.equals(p)) {
+            if (pr.getCode().equals(p.getCode())) {
                 uguale = true;
             }
         }

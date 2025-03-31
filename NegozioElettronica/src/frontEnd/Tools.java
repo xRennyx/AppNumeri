@@ -101,14 +101,14 @@ public class Tools {
         System.out.println("Inserisci Autore: ");
         String autore= sc.nextLine();
         System.out.println("Inserisci ISBN: ");
-        int ISBN= sc.nextInt();
+        int ISBN= Integer.parseInt(sc.nextLine());
         System.out.println("Inserisci Prezzo: ");
-        double prezzo= sc.nextDouble();
+        double prezzo= Double.parseDouble(sc.nextLine());
         System.out.println("Inserisci Quantità: ");
-        int quantita= sc.nextInt();
+        int quantita= Integer.parseInt(sc.nextLine());
         System.out.println("Inserisci Argmento: ");
-        String argpmento= sc.nextLine();
-        return new Manuale(nome, Descrizione, autore, ISBN, prezzo, quantita, argpmento);
+        String argomento= sc.nextLine();
+        return new Manuale(nome, Descrizione, autore, ISBN, prezzo, quantita, argomento);
 
     }
 

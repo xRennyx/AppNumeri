@@ -14,7 +14,7 @@ public class Main {
         NegozioElettronica n = new NegozioElettronica();
         Scanner sc = new Scanner(System.in);
         boolean esci = false;
-        String[] opzioni = {"SCEGLI OPZIONE", "INSERISCI", "VISUALIZZA", "RICERCA", "RIMUOVI", "MODIFICA PREZZO", "ESCI"};
+        String[] opzioni = {"SCEGLI OPZIONE", "INSERISCI ELETTRONICO", "VISUALIZZA", "RICERCA", "RIMUOVI", "MODIFICA PREZZO", "INSERISCI LIBRO","ESCI"};
 
         do {
             try {
@@ -48,7 +48,12 @@ public class Main {
                         double prezzo= Double.parseDouble(sc.nextLine());
                         n.modificaPrezzo(code, prezzo);
                     }
-                    case 6 -> {
+                    case 6->
+                    {
+                        Libro l=Tools.leggiLibro();
+                        n.inserisciProdotto(l);
+                    }
+                    case 7 -> {
                         esci = true;
                     }
                     default -> System.out.println("Errore opzione");
