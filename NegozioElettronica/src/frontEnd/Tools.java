@@ -55,7 +55,7 @@ public class Tools {
         //tastiera.nextLine();
         return scelta;
     }
-    public static ProdottoElettronico leggiProdotto()throws Exception
+    public static Prodotto leggiProdotto()throws Exception
     {
         Scanner sc=new Scanner(System.in);
         System.out.println("Inserisci Codice: ");
@@ -91,7 +91,7 @@ public class Tools {
         return null;
     }
 
-    public static Libro leggiLibro()
+    public static Prodotto leggiLibro()
     {
         Scanner sc=new Scanner(System.in);
         System.out.println("Inserisci Nome: ");
@@ -101,14 +101,14 @@ public class Tools {
         System.out.println("Inserisci Autore: ");
         String autore= sc.nextLine();
         System.out.println("Inserisci ISBN: ");
-        int ISBN= Integer.parseInt(sc.nextLine());
+        String code= sc.nextLine();
         System.out.println("Inserisci Prezzo: ");
         double prezzo= Double.parseDouble(sc.nextLine());
         System.out.println("Inserisci Quantità: ");
         int quantita= Integer.parseInt(sc.nextLine());
         System.out.println("Inserisci Argmento: ");
         String argomento= sc.nextLine();
-        return new Manuale(nome, Descrizione, autore, ISBN, prezzo, quantita, argomento);
+        return new Manuale(nome, Descrizione, autore, code, prezzo, quantita, argomento);
 
     }
 

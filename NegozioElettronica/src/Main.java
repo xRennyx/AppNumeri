@@ -20,7 +20,7 @@ public class Main {
             try {
                 switch (Menu(opzioni, sc)) {
                     case 1 -> {
-                        ProdottoElettronico p = Tools.leggiProdotto();
+                        Prodotto p = Tools.leggiProdotto();
                         n.inserisciProdotto(p);
                     }
                     case 2 ->
@@ -50,8 +50,13 @@ public class Main {
                     }
                     case 6->
                     {
-                        Libro l=Tools.leggiLibro();
-                        n.inserisciProdotto(l);
+                        try {
+                            Prodotto p = Tools.leggiLibro();
+                            n.inserisciProdotto(p);
+                        }catch (Exception e)
+                        {
+                            System.out.println(e.getMessage());
+                        }
                     }
                     case 7 -> {
                         esci = true;

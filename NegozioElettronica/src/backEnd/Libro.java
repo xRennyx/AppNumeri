@@ -1,26 +1,26 @@
 package backEnd;
 
-abstract public class Libro implements Prodotto
+abstract public class Libro implements  Cloneable,Prodotto
 {
     private String nome;
     private String descrizione;
     private String autore;
-    private int ISBN;
+    private String codice;
     private double prezzo;
     private int quantita;
 
-    public Libro(String nome, String descrizione, String autore, int ISBN, double prezzo, int quantita) {
+    public Libro(String nome, String descrizione, String autore, String codice, double prezzo, int quantita) {
         this.nome = nome;
         this.descrizione = descrizione;
         this.autore = autore;
-        this.ISBN = ISBN;
+        this.codice = codice;
         this.prezzo = prezzo;
         this.quantita = quantita;
     }
 
     @Override
     public String getCode() {
-        return nome;
+        return codice;
     }
 
     public String getDescrizione() {
@@ -31,8 +31,8 @@ abstract public class Libro implements Prodotto
         return autore;
     }
 
-    public int getISBN() {
-        return ISBN;
+    public String getNome() {
+        return nome;
     }
 
     public double getPrezzo() {
@@ -45,7 +45,7 @@ abstract public class Libro implements Prodotto
     @Override
     public String toString()
     {
-        return String.format("Nome: %s, Descrizione: %s, Autore: %s, ISBN: %d, Prezzo: %.2f, Quantità: %d", nome, descrizione, autore, ISBN, prezzo, quantita);
+        return String.format("Nome: %s, Descrizione: %s, Autore: %s, Codice: %s, Prezzo: %.2f, Quantità: %d", nome, descrizione, autore, codice, prezzo, quantita);
     }
     @Override
     public Prodotto clone() throws CloneNotSupportedException {
@@ -54,5 +54,14 @@ abstract public class Libro implements Prodotto
     @Override
     public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
+    }
+    @Override
+    public boolean equals(Object obj)
+    {
+        if(obj instanceof  Libro)
+        {
+            return this.codice.equals(((Libro) obj).codice);
+        }
+        return false;
     }
 }
