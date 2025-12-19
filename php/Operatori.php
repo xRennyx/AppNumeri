@@ -60,3 +60,61 @@ $stringa = "O'Reilly";
 echo addslashes($stringa); // O\'Reilly
 $stringa = "O\'Reilly";
 echo stripslashes($stringa); // O'Reilly
+
+
+$numero = -5;
+echo "abs($numero) = " . abs($numero) . "<br>"; // 5
+// ceil() - Arrotonda un numero per eccesso
+$numero = 4.3;
+echo "ceil($numero) = " . ceil($numero) . "<br>"; // 5
+// floor() - Arrotonda un numero per difetto
+$numero = 4.7;
+echo "floor($numero) = " . floor($numero) . "<br>"; // 4
+// round() - Arrotonda un numero al valore più vicino
+$numero = 4.5;
+echo "round($numero) = " . round($numero) . "<br>"; // 5
+// mt_rand() - Genera un numero casuale (migliore della funzione rand())
+echo "mt_rand() = " . mt_rand() . "<br>"; // Numero casuale
+// rand() - Genera un numero casuale
+echo "rand() = " . rand() . "<br>"; // Numero casuale
+// min() - Restituisce il valore minimo tra i numeri passati
+echo "min(10, 20, 30) = " . min(10, 20, 30) . "<br>"; // 10
+// max() - Restituisce il valore massimo tra i numeri passati
+echo "max(10, 20, 30) = " . max(10, 20, 30) . "<br>"; // 30
+// sqrt() - Calcola la radice quadrata di un numero
+$numero = 16;
+echo "sqrt($numero) = " . sqrt($numero) . "<br>"; // 4
+// pow() - Calcola la potenza di un numero
+$base = 2;
+$esponente = 3;
+echo "pow($base, $esponente) = " . pow($base, $esponente) . "<br>"; // 8
+// intdiv() - Esegui una divisione intera (senza decimali)
+$dividendo = 7;
+$divisore = 2;
+echo "intdiv($dividendo, $divisore) = " . intdiv($dividendo, $divisore) . "<br>"; // 3
+// number_format() - Formattta un numero con migliaia separate e decimali
+$numero = 1234567.891;
+echo "number_format($numero, 2) = " . number_format($numero, 2, ".", ",") . "<br>"; // 1,234,567.89
+// is_numeric() - Verifica se una variabile è numerica
+$variabile = "123";
+echo "is_numeric($variabile) = " . (is_numeric($variabile) ? 'true' : 'false') . "<br>"; // true
+// is_int() - Verifica se una variabile è un intero
+$variabile = 123;
+echo "is_int($variabile) = " . (is_int($variabile) ? 'true' : 'false') . "<br>"; // true
+// is_float() - Verifica se una variabile è un float
+$variabile = 123.45;
+echo "is_float($variabile) = " . (is_float($variabile) ? 'true' : 'false') . "<br>"; // true
+// intval() - Converte un valore in intero
+$variabile = "123.45";
+echo "intval($variabile) = " . intval($variabile) . "<br>"; // 123
+// floatval() - Converte un valore in float
+$variabile = "123";
+echo "floatval($variabile) = " . floatval($variabile) . "<br>"; // 123.0
+// pi() - Restituisce il valore di pi greco
+echo "pi() = " . pi() . "<br>"; // 3.1415926535898
+// log() - Calcola il logaritmo naturale (base e)
+$numero = 10;
+echo "log($numero) = " . log($numero) . "<br>"; // 2.302585092994
+// exp() - Calcola il valore di e elevato a una potenza
+$esponente = 2;
+echo "exp($esponente) = " . exp($esponente) . "<br>";
