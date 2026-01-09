@@ -63,7 +63,8 @@ INSERT INTO access_point (modello, id_produttore, id_standard, porte_ethernet, a
 SELECT * from access_point
 where anno_produzione>2020 
 
-
+SELECT modello from access_point
+where porte_ethernet>3
 
 
 
