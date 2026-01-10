@@ -66,5 +66,68 @@ where anno_produzione>2020
 SELECT modello from access_point
 where porte_ethernet>3
 
+SELECT modello, anno_produzione
+FROM access_point
+WHERE anno_produzione > 2018;
+
+SELECT a.modello, p.nome AS produttore
+FROM access_point a
+INNER JOIN produttori p
+ON a.id_produttore = p.id_produttore;
+
+SELECT a.modello, p.nome AS produttore, s.nome_standard
+FROM access_point a
+INNER JOIN produttori p ON a.id_produttore = p.id_produttore
+INNER JOIN standard_wifi s ON a.id_standard = s.id_standard;
+
+SELECT p.nome, a.modello
+FROM produttori p
+LEFT JOIN access_point a
+ON p.id_produttore = a.id_produttore;
+
+SELECT p.nome, a.modello
+FROM produttori p
+RIGHT JOIN access_point a
+ON p.id_produttore = a.id_produttore;
+
+SELECT p.nome, COUNT(a.id_access_point) AS totale_access_point
+FROM produttori p
+JOIN access_point a ON p.id_produttore = a.id_produttore
+GROUP BY p.nome;
+
+SELECT s.nome_standard, AVG(a.porte_ethernet) AS media_porte
+FROM standard_wifi s
+JOIN access_point a ON s.id_standard = a.id_standard
+GROUP BY s.nome_standard;
+
+SELECT MAX(anno_produzione) AS piu_recente, MIN(anno_produzione) AS piu_vecchio
+FROM access_point;
+
+SELECT p.nome, COUNT(a.id_access_point) AS totale
+FROM produttori p
+JOIN access_point a ON p.id_produttore = a.id_produttore
+GROUP BY p.nome
+HAVING COUNT(a.id_access_point) > 1;
+
+SELECT s.nome_standard, AVG(s.velocita_massima_mbps) AS velocita_media
+FROM standard_wifi s
+GROUP BY s.nome_standard
+HAVING AVG(s.velocita_massima_mbps) > 1000;
+
+UPDATE standard_wifi
+SET obsoleto = TRUE
+WHERE nome_standard IN ('802.11b', '802.11a', '802.11g');
+
+UPDATE access_point
+SET porte_ethernet = 2
+WHERE modello = 'DAP-1360';
+
+DELETE FROM access_point
+WHERE anno_produzione < 2003;
+
+DELETE FROM produttori
+WHERE nome = 'Ubiquiti';
+
+
 
 
