@@ -76,5 +76,6 @@ $studenti=[
 <?php while($var5<5):?>
 <a><?= $var5++ ?></a>
 <?php endwhile; ?>
+<footer>&copy; 2007-2026 Francis S.r.l | Privacy and reserver</footer>
 </body>
 </html>
