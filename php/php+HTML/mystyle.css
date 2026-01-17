@@ -42,3 +42,11 @@ td:last-child {
     text-align: center;
     font-weight: 600;
 }
+footer {
+    background-color: #222;         /* sfondo scuro */
+    color: #ddd;                    /* testo chiaro */
+    text-align: center;
+    padding: 20px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-top: 3px solid #00bfff; /* linea decorativa */
+}
