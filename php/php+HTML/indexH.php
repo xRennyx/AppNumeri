@@ -1,27 +1,31 @@
 <?php
-#server side
+#server side, questa parte viene eseguita dal server
 $var='Buongiorno';
 $array=['Informatica', 'TPSIT', 'Sistemi', 'GPOI'];
 $var2=5;
 $var3='Giusto';
 $var4='Sbagliato';
+$var5=0;
 $msg='Questo è un messaggio per Javascript';
 $studenti=[
         [   'nome'=>'Ciro',
             'cognome'=>'Immobile',
-            'media'=>8
+            'media'=>8,
+            'classe'=>'Lazio'
         ],
         [   'nome'=>'Pio',
             'cognome'=>'Esposito',
-            'media'=>10
+            'media'=>10,
+            'classe'=>'Inter'
 
         ],
         [   'nome'=>'Luis',
             'cognome'=>'Openda',
-            'media'=>5
+            'media'=>5,
+            'classe'=>'Juventus'
 
         ]
-]
+]#studenti array che contiene array assocciativi
 ?>
 <!-- server side non esiste nel browser passa solo HTML php non visualizzabile -->
 <!doctype html>
@@ -32,7 +36,7 @@ $studenti=[
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="mystyle.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Documento</title>
 </head>
 <body>
 <p>Ciao</p>
@@ -61,12 +65,16 @@ $studenti=[
     <tbody>
     <?php foreach ($studenti as $studente): ?>
         <tr>
-            <td><?= $studente['nome'] ?></td>
-            <td><?= $studente['cognome'] ?></td>
-            <td><?= $studente['media'] ?></td>
+            <?php foreach ($studente as $campo): ?>
+                <td><?= $campo ?></td>
+            <?php endforeach; ?>
         </tr>
     <?php endforeach; ?>
     </tbody>
 </table>
+</table>
+<?php while($var5<5):?>
+<a><?= $var5++ ?></a>
+<?php endwhile; ?>
 </body>
 </html>
