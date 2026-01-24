@@ -1,0 +1,62 @@
+<?php
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Documento Form</title>
+</head>
+<body>
+<form method="POST" action="elabora.php"> <!-- attributo metodo=post o get con post dico ad http come vengono trasferiti i dati (default mette get)
+                                               attributo action= dico al server che quando faccio invio del form lo script di dati inviati è "elabora.php" -->
+<h1>Informazioni</h1>
+    <label for="nome">Nome</label><input id="nome" type="text" name="nome"><br>
+    <label for="cognome">Cognome</label><input id="cognome" type="text" name="cognome"><br>
+    <label for="email">Email</label><input id="email" type="email" name="email"><br>
+    <label for="password">Password</label><input id="password" type="password" name="password"><br>
+    <label for="eta">Età</label><input id="eta" type="number" name="eta"><br>
+    <label>Sesso</label><br>
+    <label for="sessoM">Maschio</label>
+    <input id="sessoM" type="radio" name="sesso" value="Maschio"><br>
+    <label for="sessoF">Femmina</label>
+    <input id="sessoF" type="radio" name="sesso" value="Femmina"><br>
+    <label>Corsi</label><br>
+    <label for="corsoPHP">PHP</label>
+    <input id="corsPhp" type="checkbox" name="corsi" value="php"><br>
+    <label for="corsoJava">Java</label>
+    <input id="corsoJava" type="checkbox" name="corsi" value="java"><br>
+    <label for="corsoHTML">HTML</label>
+    <input id="corsoHTML" type="checkbox" name="corsi" value="html"><br>
+    <br>
+    <!-- Drop down list -->
+    <label>Città Residenza</label><br>
+    <select name="citta">
+        <option value="">--Seleziona--</option>
+        <option value="Roma">Roma</option>
+        <option value="Milano">Milano</option>
+        <option value="Torino">Torino</option>
+        <option value="Venezia">Venezia</option>
+        <option value="Genova">Genova</option>
+        <option value="Napoli">Napoli</option>
+    </select><br>
+    <!-- List box multipla -->
+    <label for="lingua">Lingue conosciute</label><br>
+    <select name="lingua[]" multiple>
+        <option value="Polacco">Polacco</option>
+        <option value="Italiano">Italiano</option>
+        <option value="Russo">Russo</option>
+        <option value="Latino">Latino</option>
+        <option value="Tedesco">Tedesco</option>
+        <option value="Inglese">Inglese</option>
+        <option value="Spagnolo">Spagnolo</option>
+    </select><br>
+    <label for="area">Scrivi qualcosa di utile</label><br>
+    <textarea name="area">Scrivi...</textarea><br>
+    <button type="submit">Invia</button>
+
+</form>
+</body>
+</html>
