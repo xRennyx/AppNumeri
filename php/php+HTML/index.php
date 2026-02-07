@@ -1,5 +1,5 @@
 <?php
-$db = new PDO("mysql:host=192.168.60.144;dbname=francesco_renesto_studenti;charset=utf8", //PPDO è una classe che permette la comunicazione tra php ed un database
+$db = new PDO("mysql:host=192.168.60.144;dbname=francesco_renesto_studenti;charset=utf8", //PDO è una classe che permette la comunicazione tra php ed un database
     "francesco_renesto",
     "spremente.proseguivo.",
     [
