@@ -1,6 +1,6 @@
 <?php
 $dbconfig= require 'configuration/DBconfiguration.php'; //configurazioni dell'applicativo su un file a parte
-$db = new PDO($dbconfig['dsn'], $dbconfig['username'], $dbconfig['password'], $dbconfig['options']); //3 stringhe e 1 array assocciativo*/
+$db = DatabaseCon::getDB($dbconfig);
 
 $query= 'INSERT INTO studenti(nome, cognome, media, data_iscrizione) VALUES(:nome, :cognome, :media, NOW())';
 try{
