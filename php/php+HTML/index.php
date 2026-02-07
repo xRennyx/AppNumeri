@@ -1,11 +1,6 @@
 <?php
-$db = new PDO("mysql:host=192.168.60.144;dbname=francesco_renesto_studenti;charset=utf8", //PDO è una classe che permette la comunicazione tra php ed un database
-    "francesco_renesto",
-    "spremente.proseguivo.",
-    [
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, //1. Tuple restituiti come oggetti
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, //2. Gestisce le eccezioni
-    ]); //3 stringhe e 1 array assocciativo
+$dbconfig= require 'configuration/DBconfiguration.php'; //configurazioni dell'applicativo su un file a parte
+$db = new PDO($dbconfig['dsn'], $dbconfig['username'], $dbconfig['password'], $dbconfig['options']); //3 stringhe e 1 array assocciativo*/
 
 $query= 'INSERT INTO studenti(nome, cognome, media, data_iscrizione) VALUES(:nome, :cognome, :media, NOW())';
 try{
@@ -17,6 +12,37 @@ try{
 }catch (PDOException $e){
     echo "A DB error occurred. Please try again later.";
 }
+$query ='UPDATE studenti 
+        SET media = :media 
+        WHERE nome = :nome';
+
+try {
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':nome', 'Antonio', PDO::PARAM_STR);
+    $stmt->bindValue(':media', 9, PDO::PARAM_INT);
+    $stmt->execute();
+
+    if($stmt->rowCount() > 0){
+        echo "No rows were updated.";
+    }else {
+        echo "Upadate successful.";
+    }
+    echo '<br>';
+    $stmt->closeCursor();
+} catch (PDOException $e) {
+    echo "A DB error occurred. Please try again later.";
+}
+$query='DELETE FROM studenti WHERE nome = :nome';
+try {
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':nome', 'Lucy', PDO::PARAM_STR);
+    $stmt->execute();
+    echo '<br>';
+    $stmt->closeCursor();
+} catch (PDOException $e) {
+    echo "A DB error occurred. Please try again later.";
+}
+
 $query='SELECT * FROM studenti';
 try{
     $stmt = $db->prepare($query);
