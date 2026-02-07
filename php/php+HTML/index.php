@@ -1,4 +1,5 @@
 <?php
+require 'DatabaseCon.php';
 $dbconfig= require 'configuration/DBconfiguration.php'; //configurazioni dell'applicativo su un file a parte
 $db = DatabaseCon::getDB($dbconfig);
 
