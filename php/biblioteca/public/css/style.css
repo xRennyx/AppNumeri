@@ -1,0 +1,137 @@
+/* Stile generale della pagina */
+body {
+    font-family: sans-serif; /* Font semplice e leggibile */
+    min-height: 100vh; /* Altezza minima pari all’intera finestra */
+    padding: 20px; /* Spazio interno della pagina */
+    background: linear-gradient(135deg, #0f2027, #203a43); /* Sfondo sfumato */
+    color: #eee; /* Colore del testo chiaro */
+}
+
+/* Contenitore principale (box centrale) */
+.container {
+    background: #1e1e2f; /* Sfondo scuro */
+    border-radius: 10px; /* Angoli arrotondati */
+    padding: 30px; /* Spazio interno */
+    max-width: 550px; /* Larghezza massima */
+    margin: auto; /* Centra il contenitore */
+}
+
+/* Titolo principale */
+h1 {
+    color: #00f5a0; /* Verde brillante */
+    text-align: center; /* Testo centrato */
+}
+
+/* Sottotitolo */
+.sottotitolo {
+    text-align: center;
+    color: #9d4edd; /* Viola */
+}
+
+/* Box data e card statistiche */
+.datetime,
+.card {
+    background: #16213e; /* Sfondo scuro */
+    padding: 15px; /* Spazio interno */
+    border-radius: 8px; /* Angoli arrotondati */
+    margin-bottom: 20px; /* Spazio sotto */
+    text-align: center; /* Testo centrato */
+}
+
+/* Pulsante principale */
+.btn {
+    background: #00f5a0; /* Verde */
+    color: #111; /* Testo scuro */
+    padding: 10px 15px; /* Spazio interno */
+    border-radius: 20px; /* Angoli molto arrotondati */
+    border: none; /* Nessun bordo */
+    cursor: pointer; /* Puntatore a mano */
+}
+
+/* Effetto hover (quando il mouse passa sopra) */
+.btn:hover {
+    background: #9d4edd; /* Cambia colore */
+    color: #fff; /* Testo bianco */
+}
+
+/* Pulsante secondario */
+.btn-secondario {
+    background: #444; /* Grigio scuro */
+    color: #fff; /* Testo bianco */
+}
+
+/* Gruppo di campi (form) */
+.form-group {
+    display: flex; /* Disposizione in riga */
+    gap: 10px; /* Spazio tra elementi */
+    margin-top: 15px; /* Spazio sopra */
+}
+
+/* Etichette dei campi */
+label {
+    display: block; /* Ogni etichetta su nuova riga */
+    margin-bottom: 5px; /* Spazio sotto */
+}
+
+/* Input (campi di testo) */
+input {
+    width: 100%; /* Larghezza piena */
+    padding: 8px; /* Spazio interno */
+    border-radius: 5px; /* Angoli arrotondati */
+    border: 1px solid #333; /* Bordo scuro */
+    background: #2a2a40; /* Sfondo scuro */
+    color: #fff; /* Testo bianco */
+}
+
+/* Quando l’input è selezionato */
+input:focus {
+    outline: none; /* Rimuove contorno predefinito */
+    border-color: #00f5a0; /* Bordo verde */
+}
+
+/* Messaggi di feedback */
+.messaggio {
+    padding: 10px; /* Spazio interno */
+    border-radius: 5px; /* Angoli arrotondati */
+    margin-bottom: 15px; /* Spazio sotto */
+}
+
+/* Messaggio di successo */
+.successo {
+    background: #003f2f; /* Verde scuro */
+    color: #00f5a0; /* Testo verde */
+}
+
+/* Messaggio di errore */
+.errore {
+    background: #3a0f1f; /* Rosso scuro */
+    color: #ff4d6d; /* Testo rosso */
+}
+
+/* Tabella */
+table {
+    width: 100%; /* Larghezza completa */
+    border-collapse: collapse; /* Rimuove spazi tra celle */
+}
+
+/* Celle della tabella */
+th, td {
+    padding: 8px; /* Spazio interno */
+}
+
+/* Intestazione tabella */
+th {
+    background: #2a2a40; /* Sfondo scuro */
+    color: #00f5a0; /* Testo verde */
+}
+
+/* Effetto quando il mouse passa sulle righe */
+tbody tr:hover {
+    background: #2f2f4a; /* Cambia sfondo */
+}
+
+/* Messaggio "nessun dato" */
+.no-data {
+    text-align: center; /* Testo centrato */
+    color: #777; /* Grigio chiaro */
+}
