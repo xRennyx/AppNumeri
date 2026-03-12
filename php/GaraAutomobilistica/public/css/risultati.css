@@ -1,0 +1,122 @@
+/* Container principale */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #1e1e2f;
+    color: #f0f0f0;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Titoli */
+h1, h2 {
+    color: #ff8080;
+    text-align: center;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select, input[type="text"], input[type="date"], input[type="time"], input[type="number"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    width: 200px;
+}
+
+/* Pulsanti */
+.btn {
+    padding: 10px 20px;
+    background-color: #ff8080;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #e65555;
+}
+
+.btn-secondario {
+    padding: 10px 20px;
+    background-color: #50506a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-secondario:hover {
+    background-color: #3c3c55;
+}
+
+/* Messaggi di successo/errore */
+.messaggio {
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.successo {
+    background-color: #4caf50;
+    color: white;
+}
+
+.errore {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Tabelle */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #50506a;
+}
+
+th {
+    background-color: #2b2b3c;
+    color: #ff8080;
+}
+
+tr:hover {
+    background-color: #50506a;
+}
+
+/* Evidenziare vincitore */
+tr:first-child {
+    background-color: #2a5d2a !important;
+    font-weight: bold;
+}
+
+/* Evidenziare giro veloce */
+td.giro-veloce {
+    background-color: #ffd700;
+    color: #000;
+    font-weight: bold;
+}

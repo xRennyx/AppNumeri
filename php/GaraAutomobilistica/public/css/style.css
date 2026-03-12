@@ -1,0 +1,104 @@
+/* stile.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #222;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #f44336;
+}
+
+.container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 0 10px #000;
+}
+
+.card h2 {
+    color: #f44336;
+    margin-bottom: 15px;
+}
+
+.card a {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.card a:hover {
+    background-color: #cc0000;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #3c3c55;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #50506a;
+}
+
+th {
+    background-color: #2b2b3c;
+    color: #ff8080;
+}
+
+tr:hover {
+    background-color: #50506a;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #3c3c55;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #50506a;
+}
+
+th {
+    background-color: #2b2b3c;
+    color: #ff8080;
+}
+
+tr:hover {
+    background-color: #50506a;
+}
