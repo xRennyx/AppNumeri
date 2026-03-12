@@ -16,3 +16,22 @@ nazionalita varchar(50),
 nome_scuderia varchar(50),
 foreign key (nome_scuderia) references Case_Automobilistiche (nome_scuderia)
 );
+
+CREATE TABLE gara (
+    id_gara INT AUTO_INCREMENT PRIMARY KEY,
+    nome_gara VARCHAR(100) NOT NULL,
+    circuito VARCHAR(100),
+    data_gara DATE NOT NULL
+);
+
+CREATE TABLE risultato (
+    id_risultato INT AUTO_INCREMENT PRIMARY KEY,
+    numero INT NOT NULL,
+    id_gara INT NOT NULL,
+    posizione INT NOT NULL,
+    tempo_gara TIME,
+    giro_veloce BOOLEAN DEFAULT FALSE,
+
+    FOREIGN KEY (numero) REFERENCES Piloti(numero),
+    FOREIGN KEY (id_gara) REFERENCES gara(id_gara)
+);
