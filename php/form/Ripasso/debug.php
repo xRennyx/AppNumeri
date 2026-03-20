@@ -59,5 +59,14 @@ $utenti[] = $nuovo_utente;
     <?php endforeach; ?>
 </table>
 
+    <!-- con file -->
+    $file=fopen("prova.txt", "a")
+    <?php foreach ($utenti as $utente): ?>
+    <?php foreach ($utente as $chiave => $valore): ?>
+    fwrite($file, $chiave.":".$valore)
+    fclose($file)
+     <?php endforeach; ?>
+     <?php endforeach; ?>
+
 </body>
 </html>
