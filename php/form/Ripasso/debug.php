@@ -25,13 +25,18 @@ $nuovo_utente = [
 ];
 $utenti[] = $nuovo_utente;
     // con file 
-    $file=fopen("prova.txt", "a")
-    <?php foreach ($utenti as $utente): ?>
-    <?php foreach ($utente as $chiave => $valore): ?>
-    fwrite($file, $chiave.":".$valore)
-    fclose($file)
-     <?php endforeach; ?>
-     <?php endforeach; ?>
+<?php
+$file = fopen("prova.txt", "a");
+
+foreach ($utenti as $utente) {
+    foreach ($utente as $chiave => $valore) {
+        fwrite($file, "$chiave:$valore ");
+    }
+    fwrite($file, "\n");
+}
+
+fclose($file);
+?>
 
 ?>
 <!DOCTYPE html>
