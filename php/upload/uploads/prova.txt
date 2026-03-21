@@ -1,0 +1,7 @@
+TITOLO: Su questo file faremo delle prove
+PRIMA PROVA: post request al server
+SECONDA PROVA: get request al server
+TERZA PROVA A: update per la versione cinese
+TERZA PROVA B: update request al server per la versione americana
+QUARTA PROVA: put request al server per la versione americana
+
